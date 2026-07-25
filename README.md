@@ -9,7 +9,12 @@ dois JS próprios e GSAP para o movimento.
 ```bash
 node build.js     # gera os .html na raiz + sitemap.xml
 node serve.js     # preview em http://127.0.0.1:8099
+node shot.js /    # captura mobile+desktop em shots/ e acusa overflow horizontal
 ```
+
+`shot.js` fala CDP direto com o Chrome instalado (Node 22+ traz WebSocket
+nativo), então não precisa de Puppeteer. Passe a rota como argumento:
+`node shot.js /acomodacoes`.
 
 Não há `npm install`: o projeto não tem dependências de runtime. O GSAP já está
 vendorizado em `assets/vendor/`.

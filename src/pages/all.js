@@ -52,20 +52,8 @@ const home = {
   <div class="hero__inner">
     <div class="hero__head">
       <p class="eyebrow"><span class="rule"></span> Praia de Maragogi · Alagoas</p>
-      <h1>Da varanda até o mar, <span class="accent-i">nenhuma rua</span> no caminho</h1>
-      <p class="hero__lead">Pousada pé na areia com nove acomodações, todas de varanda e vista para o mar. Piscina no gramado, quiosque à beira da praia e café da manhã feito pela casa.</p>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="${WA(WA_DISP)}">${ico('whatsapp-logo-fill')} Consultar disponibilidade</a>
-        <a class="btn btn--outline" href="/acomodacoes">${ico('bed')} Ver as acomodações</a>
-      </div>
-      <a class="trust" href="https://www.booking.com/hotel/br/grandmarsuitesmaragogi.pt-br.html" target="_blank" rel="noopener">
-        <span class="trust__score">9,1</span>
-        <span class="trust__txt">
-          <span class="trust__stars">${ico('star') + ico('star') + ico('star') + ico('star') + ico('star')}</span>
-          693 avaliações no Booking.com
-          <small>Localização 9,5 · Atendimento 9,4</small>
-        </span>
-      </a>
+      <h1>Da varanda até o mar, <span class="accent-i">nenhuma rua</span></h1>
+      <p class="hero__lead">Nove quartos <strong>pé na areia</strong>, todos com varanda e vista para o mar, piscina no gramado e café feito na casa.</p>
     </div>
     <div class="hero__media">
       <div class="collage">
@@ -78,28 +66,37 @@ const home = {
         </figure>
       </div>
     </div>
+    <div class="hero__cta">
+      <div class="hero__actions">
+        <a class="btn btn--whats" href="${WA(WA_DISP)}">${ico('whatsapp-logo-fill')} Consultar disponibilidade</a>
+        <a class="btn btn--outline" href="/acomodacoes">${ico('bed')} Ver as acomodações</a>
+      </div>
+      <a class="trust" href="https://www.booking.com/hotel/br/grandmarsuitesmaragogi.pt-br.html" target="_blank" rel="noopener">
+        <span class="trust__score">9,1</span>
+        <span class="trust__stars">${ico('star') + ico('star') + ico('star') + ico('star') + ico('star')}</span>
+        <span class="trust__txt">Nota no Booking, em 693 avaliações<small>Localização 9,5 · Atendimento 9,4</small></span>
+      </a>
+    </div>
   </div>
 </section>
 
 <section class="strip" aria-label="A pousada em resumo">
   <div class="shell">
     <ul class="strip__list">
-      <li><span class="strip__ico">${ico('waves')}</span><span><b>Pé na areia</b><small>Sem rua entre o jardim e o mar</small></span></li>
-      <li><span class="strip__ico">${ico('bed')}</span><span><b>9 acomodações</b><small>Todas com varanda e vista</small></span></li>
-      <li><span class="strip__ico">${ico('coffee')}</span><span><b>Café feito na casa</b><small>Bolo quente todas as manhãs</small></span></li>
-      <li><span class="strip__ico">${ico('sailboat')}</span><span><b>Galés a 4,7 km</b><small>As piscinas naturais</small></span></li>
+      <li>${ico('waves')}<span><b>Pé na areia</b><small>Sem rua até o mar</small></span></li>
+      <li>${ico('bed')}<span><b>9 quartos</b><small>Todos com varanda</small></span></li>
+      <li>${ico('coffee')}<span><b>Café da casa</b><small>Bolo quente de manhã</small></span></li>
+      <li>${ico('sailboat')}<span><b>Galés a 4,7 km</b><small>Piscinas naturais</small></span></li>
     </ul>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec sec--tight">
   <div class="shell split split--wide-media">
     <div class="split__body">
-      <p class="eyebrow">A pousada</p>
-      <h2>Uma casa pequena, na beira da praia, tocada por quem mora aqui</h2>
-      <p>A Grandmar tem nove quartos e um jardim que termina na areia. Não é resort e não quer ser: o café é servido pela mesma equipe que recebe você na chegada, e o dono costuma estar por perto para indicar o passeio do dia ou o restaurante da esquina.</p>
-      <p>Todos os quartos abrem para uma varanda voltada para o mar — de frente ou de lado — com ar-condicionado, frigobar, TV e banheiro privativo.</p>
-      <blockquote class="pull">Pousada linda, aconchegante, área externa bem cuidada, pessoal educado desde a recepção até o pessoal da cozinha.<cite>Raquel · avaliação no Booking.com</cite></blockquote>
+      <p class="eyebrow"><span class="rule"></span> A pousada</p>
+      <h2>Uma casa pequena, tocada por quem mora aqui</h2>
+      <p>Nove quartos e um jardim que termina na areia. O café é servido pela mesma equipe que recebe você na chegada — e o dono costuma estar por perto para indicar o passeio do dia.</p>
       <div class="split__actions">
         <a class="tlink" href="/a-pousada">Conhecer a pousada ${ico('arrow-right')}</a>
       </div>
@@ -111,71 +108,55 @@ const home = {
   </div>
 </section>
 
-<section class="sec sec--shore">
+<section class="sec sec--tight sec--shore">
   <div class="shell">
     <div class="sechead">
       <div>
-        <p class="eyebrow">Acomodações</p>
-        <h2>Nove quartos, todos com varanda</h2>
-        <p class="lead">As categorias mudam pela composição de camas e pelo ângulo do mar. Veja as três mais procuradas.</p>
+        <p class="eyebrow"><span class="rule"></span> Acomodações</p>
+        <h2>Seis categorias, do casal à família</h2>
       </div>
-      <a class="tlink" href="/acomodacoes">Ver todas as categorias ${ico('arrow-right')}</a>
+      <a class="tlink" href="/acomodacoes">Ver todas ${ico('arrow-right')}</a>
     </div>
     <div class="rooms rooms--compact" data-compact data-limit="3"></div>
   </div>
 </section>
 
-<section class="sec">
+<section class="sec sec--tight">
   <div class="shell">
     <div class="sechead">
       <div>
-        <p class="eyebrow">Estrutura</p>
-        <h2>O que você encontra na pousada</h2>
+        <p class="eyebrow"><span class="rule"></span> Estrutura</p>
+        <h2>O que a pousada oferece</h2>
       </div>
-      <a class="tlink" href="/estrutura">Ver a estrutura completa ${ico('arrow-right')}</a>
+      <a class="tlink" href="/estrutura">Ver em detalhe ${ico('arrow-right')}</a>
     </div>
-    <div class="feats" id="feats" data-limit="6"></div>
+    <div class="feats feats--tight" id="feats" data-limit="6" data-short></div>
   </div>
 </section>
 
 <section class="sec sec--tight sec--surface" aria-label="Fotos da pousada">
-  <div class="shell">
-    <p class="eyebrow">Por dentro</p>
-    <h2>Áreas comuns e café da manhã</h2>
+  <div class="shell sechead">
+    <div>
+      <p class="eyebrow"><span class="rule"></span> Por dentro</p>
+      <h2>Áreas comuns e café da manhã</h2>
+    </div>
+    <a class="tlink" href="/galeria">Ver a galeria ${ico('arrow-right')}</a>
   </div>
   <div class="carousel" id="photoCar"></div>
-  <div class="shell" style="margin-top:var(--s4)">
-    <a class="tlink" href="/galeria">Ver a galeria completa ${ico('arrow-right')}</a>
-  </div>
 </section>
 
-<section class="sec sec--deep">
-  <div class="shell">
-    <div class="sechead">
-      <div>
-        <p class="eyebrow eyebrow--light">Quem já ficou</p>
-        <h2>O que os hóspedes destacam</h2>
-        <p class="lead">Notas e comentários publicados nas plataformas de reserva, sem seleção nossa.</p>
-      </div>
-    </div>
-    <div class="ratings" id="ratings" style="margin-bottom:var(--s7)"></div>
-    <div class="quotes" id="quotes" data-limit="3"></div>
-  </div>
-</section>
-
-<section class="sec">
-  <div class="shell split split--flip">
+<section class="sec sec--tight">
+  <div class="shell split split--flip split--wide-media">
     <div class="split__body">
-      <p class="eyebrow">Maragogi</p>
+      <p class="eyebrow"><span class="rule"></span> Maragogi</p>
       <h2>O ponto de partida para as <span class="accent-i">Galés</span></h2>
-      <p>As piscinas naturais das Galés ficam a 4,7 km da pousada, e os barcos saem conforme a maré. Do portão para o outro lado estão a faixa de areia e os restaurantes da orla, a cerca de 100 metros.</p>
-      <p>A pousada ajuda a encaixar o passeio no horário certo e indica quem contratar.</p>
+      <p>As piscinas naturais ficam a 4,7 km e os barcos saem conforme a maré. A pousada ajuda a encaixar o passeio no dia certo.</p>
       <div class="split__actions">
-        <a class="btn btn--outline" href="/maragogi">${ico('sailboat')} O que fazer em Maragogi</a>
+        <a class="tlink" href="/maragogi">O que fazer em Maragogi ${ico('arrow-right')}</a>
       </div>
     </div>
     <div class="split__media">
-      <img src="img/praia-natureza-06.webp" alt="Mesas do quiosque da pousada com o mar de Maragogi ao fundo" width="1400" height="933" loading="lazy" decoding="async">
+      <img src="img/vista-mar-02.webp" alt="A faixa de areia e o mar de Maragogi" width="1400" height="933" loading="lazy" decoding="async">
     </div>
   </div>
 </section>

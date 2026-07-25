@@ -31,12 +31,7 @@ const MARK = `<svg class="brand__mark" viewBox="0 0 48 46" aria-hidden="true">
         <path d="M2 37c4.6 0 4.6 4 9.2 4s4.6-4 9.2-4 4.6 4 9.2 4 4.6-4 9.2-4 4.6 4 9.2 4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" opacity=".32"/>
       </svg>`;
 
-/* Divisor de onda — mesmo desenho da marca, esticado. Separa um bloco claro de
-   um bloco escuro sem precisar de borda reta. `up` inverte a curva. */
-const wave = (up) =>
-  `<svg class="wave-div${up ? ' wave-div--up' : ''}" viewBox="0 0 1440 26" preserveAspectRatio="none" aria-hidden="true">
-    <path d="M0 26V8c120 0 120 10 240 10S360 8 480 8s120 10 240 10S840 8 960 8s120 10 240 10 120-10 240-10v18Z" fill="currentColor"/>
-  </svg>`;
+const MAPA_LINK = 'https://www.google.com/maps/search/?api=1&query=-9.01990964,-35.22438614';
 
 /* páginas na ordem do menu */
 const NAV = [
@@ -46,6 +41,7 @@ const NAV = [
   ['/estrutura', 'Estrutura', 'estrutura'],
   ['/galeria', 'Galeria', 'galeria'],
   ['/maragogi', 'Maragogi', 'maragogi'],
+  ['/como-chegar', 'Como chegar', 'como-chegar'],
   ['/contato', 'Contato', 'contato'],
 ];
 
@@ -83,8 +79,9 @@ function layout(page) {
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-${page.preload || ''}<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+${page.preload || ''}<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,300..600;1,300..600&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="${ver('assets/styles.css')}">
+<link rel="stylesheet" href="${ver('assets/pages.css')}">
 <noscript><style>.reveal{opacity:1}</style></noscript>
 ${page.jsonld ? '<script type="application/ld+json">' + JSON.stringify(page.jsonld) + '</script>' : ''}
 </head>
@@ -172,6 +169,7 @@ ${footer(active)}
 <script src="${ver('assets/vendor/ScrollTrigger.min.js')}"></script>
 <script src="${ver('assets/data.js')}"></script>
 <script src="${ver('assets/app.js')}"></script>
+<script src="${ver('assets/pages.js')}"></script>
 <script src="${ver('assets/motion.js')}"></script>
 </body>
 </html>
@@ -181,18 +179,17 @@ ${footer(active)}
 /* encerramento comum: o convite à reserva antes do rodapé, em todas as páginas */
 function prefooter(page) {
   var bg = page.prefooterImg || 'img/t/praia-natureza-05.webp';
-  return `${wave(false)}
-<section class="prefooter" aria-label="Reservas">
+  return `<section class="prefooter" aria-label="Reservas">
   <img class="prefooter__bg" src="${bg}" alt="" loading="lazy" decoding="async">
   <div class="prefooter__inner">
-    <p class="eyebrow eyebrow--light">Sua estadia em Maragogi</p>
-    <h2>Quer saber se temos <span class="accent-i">vaga</span> nas suas datas?</h2>
-    <p class="prefooter__lead">Fale direto com a pousada: a gente confirma disponibilidade, explica cada acomodação e ajuda a montar os passeios.</p>
-    <div class="prefooter__actions">
-      <a class="btn btn--light" href="#" data-wa="${WA_HERO}">${ico('calendar-blank')} Consultar disponibilidade</a>
-      <a class="btn btn--onmedia" href="#" data-wa="Olá! Vim pelo site da Pousada Grandmar e queria tirar uma dúvida.">${ico('whatsapp-logo-fill')} Falar no WhatsApp</a>
+    <div>
+      <h2>Vamos ver se temos <span class="accent-i">vaga</span> nas suas datas?</h2>
+      <p class="prefooter__lead">Quem responde é a própria pousada, pelo WhatsApp (81) 99829-2985.</p>
     </div>
-    <p class="prefooter__note">Quem responde é a própria pousada · WhatsApp (81) 99829-2985</p>
+    <div class="prefooter__actions">
+      <a class="btn btn--whats" href="#" data-wa="${WA_HERO}">${ico('whatsapp-logo-fill')} Consultar disponibilidade</a>
+      <a class="btn btn--onmedia" href="/contato">${ico('envelope')} Outros contatos</a>
+    </div>
   </div>
 </section>`;
 }
@@ -209,31 +206,31 @@ function footer(active) {
             <span class="brand__sub">Maragogi · Alagoas</span>
           </span>
         </a>
-        <p class="footer__about">Pousada pé na areia na praia de Maragogi, com piscina, quiosque e café da manhã feito na hora.</p>
+        <address>
+          Rua Arlindo Lins de Melo, 327 — Carotes · Maragogi / AL · 57955-000<br>
+          <a href="https://wa.me/5581998292985" target="_blank" rel="noopener">(81) 99829-2985</a> — central de reservas
+        </address>
         <div class="socials">
           <a href="https://www.instagram.com/pousadagrandmarmaragogi/" target="_blank" rel="noopener" aria-label="Instagram da Pousada Grandmar">${ico('instagram-logo-fill')}</a>
           <a href="#" data-wa="Olá! Vim pelo site da Pousada Grandmar." aria-label="WhatsApp da Pousada Grandmar">${ico('whatsapp-logo-fill')}</a>
+          <a href="${MAPA_LINK}" target="_blank" rel="noopener" aria-label="A pousada no mapa">${ico('map-pin')}</a>
         </div>
       </div>
       <div>
         <p class="footer__h">Navegação</p>
-        <ul>
+        <ul class="footer__nav">
           ${NAV.map(function (n) { return '<li><a href="' + n[0] + '">' + n[1] + '</a></li>'; }).join('\n          ')}
         </ul>
-      </div>
-      <div>
-        <p class="footer__h">Contato</p>
-        <address>
-          Rua Arlindo Lins de Melo, 327 — Carotes<br>
-          Maragogi / AL · CEP 57955-000<br><br>
-          <a href="https://wa.me/5581998292985" target="_blank" rel="noopener">(81) 99829-2985</a> · central de reservas
-        </address>
-        <a class="btn btn--outline btn--sm" style="margin-top:var(--s4);color:#fff;border-color:rgba(255,255,255,.28)" href="#" data-wa="${WA_HERO}">${ico('whatsapp-logo-fill')} Reservar no WhatsApp</a>
+        <div class="plats">
+          <span>Avaliações</span>
+          <a href="https://www.booking.com/hotel/br/grandmarsuitesmaragogi.pt-br.html" target="_blank" rel="noopener">Booking <b>9,1</b></a>
+          <a href="https://www.tripadvisor.com/Hotel_Review-g644400-d23376530-Reviews-Grandmar_Suites_Maragogi-Maragogi_State_of_Alagoas.html" target="_blank" rel="noopener">Tripadvisor <b>4,3</b></a>
+        </div>
       </div>
     </div>
     <div class="footer__bar">
-      <span>© <span id="ano">2026</span> Pousada Grandmar · Maragogi (AL).</span>
-      <span>Reservas pelo WhatsApp e pelos canais oficiais da pousada</span>
+      <span>© <span id="ano">2026</span> Pousada Grandmar · Maragogi (AL)</span>
+      <span>Check-in 14h–22h · Check-out 12h–12h30</span>
     </div>
   </div>
 </footer>`;
@@ -258,7 +255,16 @@ module.exports = { layout, pageHead, ico, SITE, NAV, WA_HERO };
 
 /* ------------------------------------------------------------------ build */
 if (require.main === module) {
-  var pages = require('./src/pages/all.js');
+  /* As páginas internas moram em src/pages/internas.js e substituem, pelo slug,
+     o que ainda houver de antigo em all.js — que hoje é a home. Manter os dois
+     arquivos separados evita que frentes de trabalho diferentes disputem o
+     mesmo arquivo. */
+  var internas = require('./src/pages/internas.js');
+  var novos = internas.map(function (p) { return p.slug; });
+  var pages = require('./src/pages/all.js')
+    .filter(function (p) { return novos.indexOf(p.slug) < 0; })
+    .concat(internas);
+
   pages.forEach(function (p) {
     fs.writeFileSync(path.join(ROOT, p.slug + '.html'), layout(p));
     console.log('  ->', p.slug + '.html');

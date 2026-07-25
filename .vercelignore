@@ -1,5 +1,7 @@
-﻿fotos/
+fotos/
 src/
+shots/
 build.js
 serve.js
+shot.js
 *.md

@@ -1,9 +1,9 @@
 # Design system — Pousada Grandmar
 
-Direção: **maré alta**. Clareza de plataforma de reserva (o hóspede já sabe ler
-esse tipo de página) com voz própria — azul da logo, turquesa das piscinas
-naturais das Galés e um grotesco de personalidade nos títulos, em vez da
-serifada que todo site de pousada usa.
+Direção: **luz da manhã na areia**. Base clara e quente, azul-petróleo
+dessaturado da logo, verde-água das piscinas naturais. Nada de bloco de cor
+forte, nada de aparência de plataforma de tecnologia: o site tem que parecer
+uma pousada pequena, arejada e bem cuidada.
 
 Fonte da verdade: `assets/styles.css`. Este arquivo explica; o CSS define.
 Nenhum valor de cor, espaço, raio ou duração deve aparecer solto numa página.
@@ -12,16 +12,10 @@ Nenhum valor de cor, espaço, raio ou duração deve aparecer solto numa página
 
 ## Assinatura: a linha de maré
 
-O único elemento puramente gráfico do projeto, e ele diz algo verdadeiro sobre
-uma pousada onde os passeios dependem da tábua das marés:
-
-1. **Barra de progresso** turquesa de 3px no topo, que enche conforme a página
-   rola (`.tide`, animada no `motion.js` com ScrollTrigger).
-2. **Divisor de onda** (`wave()` no `build.js`) separando o bloco claro do bloco
-   escuro antes da chamada de reserva. É o mesmo desenho das ondas da marca,
-   esticado na largura da tela.
-
-Toda a boldness do projeto está aqui. O resto é disciplinado de propósito.
+Barra de 3px no topo, em verde-água, que enche conforme a página rola (`.tide`,
+animada no `motion.js` com ScrollTrigger). É a barra de progresso do site e o
+único elemento puramente gráfico do projeto — diz algo verdadeiro sobre uma
+pousada onde os passeios dependem da tábua das marés. O resto é disciplinado.
 
 ## Cores
 
@@ -30,40 +24,41 @@ token, não reescrever componente — é assim que o modo escuro funciona.
 
 | Papel | Token | Valor | De onde vem |
 |---|---|---|---|
-| Marca escura | `--brand-900` | `#082A3F` | azul da logo, no tom mais fundo |
-| Marca | `--brand-800` / `--brand-700` | `#0A4E6D` / `#0E6B93` | mar aberto |
-| Marca clara | `--brand-600` / `--brand-300` / `--brand-100` | `#1B8CBA` / `#A7D2E4` / `#E6F1F6` | água rasa |
-| Acento | `--aqua-700` / `--aqua-400` / `--aqua-200` | `#0E8A8F` / `#2EBEC2` / `#B4E5E5` | piscinas naturais das Galés |
-| Areia | `--sand` | `#E8A33D` | só nas estrelas do selo de avaliação |
-| Fundo | `--bg` / `--surface-2` | `#FFFFFF` / `#F1F5F6` | branco e vidro-do-mar |
-| Seção alternada | `--shore` | `#EAF3F4` | azul lavado |
-| Texto | `--ink` / `--ink-2` / `--muted` | `#082A3F` / `#35586C` / `#6A8595` | — |
-| Linha | `--line` / `--line-strong` | `#E3EAEC` / `#C9D6DA` | — |
-| Ação | `--cta` / `--cta-hover` | `#0A4E6D` / `#082A3F` | — |
-| WhatsApp | `--whats` | `#12793F` | cor do canal, só nele |
+| Marca escura | `--brand-900` | `#16323C` | azul-petróleo, o tom mais fundo |
+| Marca | `--brand-800` / `--brand-700` | `#1F4E5F` / `#2A6E86` | mar aberto |
+| Marca clara | `--brand-600` / `--brand-300` / `--brand-100` | `#4A8FA6` / `#A9CBD5` / `#E7F0F2` | água rasa |
+| Acento | `--aqua-700` / `--aqua-400` / `--aqua-200` | `#3C8C84` / `#6BAFA8` / `#C2DFDA` | piscinas naturais das Galés |
+| Areia | `--sand` | `#C99A4E` | só nas estrelas do selo de avaliação |
+| Fundo | `--bg` / `--surface` / `--surface-2` | `#FBF9F5` / `#FFFFFF` / `#F3F0E9` | areia clara e cal |
+| Seção alternada | `--shore` | `#EDF3F2` | verde-água lavado |
+| Texto | `--ink` / `--ink-2` / `--muted` | `#16323C` / `#4A6570` / `#7C8E96` | — |
+| Linha | `--line` / `--line-strong` | `#E6E1D7` / `#D3CCBE` | — |
+| Ação | `--cta` / `--cta-hover` | `#1F4E5F` / `#16323C` | — |
+| WhatsApp | `--whats` | `#2E8B57` | cor do canal, só nele |
+| Vidro | `--glass` / `--glass-line` / `--glass-blur` | branco 16% / branco 42% / `blur(14px)` | header, etiquetas sobre foto, botão no hero |
 
 **Modo escuro** por `prefers-color-scheme`: troca de valores no `:root`, nenhum
-componente duplicado. Fundo `#071C29`, CTA vira turquesa para manter contraste.
+componente duplicado.
 
 Regras:
-- Sem gradiente como recurso visual. Exceções, todas funcionais: a máscara de
-  leitura sobre foto (`phead`, `pcard__name`), o scrim do header transparente e
-  a própria linha de maré.
-- Turquesa é acento — eyebrow, ícone, filete de citação, palavra destacada no
-  título. Nunca fundo de bloco inteiro.
-- Fundo escuro usa `--brand-900`, não preto puro.
+- Sem gradiente como recurso visual. Exceções funcionais: a máscara de leitura
+  sobre foto (`phead`, `prefooter`, `pcard__name`) e o scrim do header.
+- Verde-água é acento — eyebrow, ícone, palavra destacada no título, filete.
+  Nunca fundo de bloco inteiro.
+- Nenhuma seção da home é um bloco chapado de cor forte. O contraste vem de
+  foto, filete e mudança sutil de fundo.
 
 ## Tipografia
 
-- Display: **Bricolage Grotesque** (variável, eixos `opsz` e `wdth`). Títulos,
-  botões, nomes de acomodação e números grandes. Peso 600, `letter-spacing`
-  negativo — o que dá a personalidade e diferencia de qualquer site de pousada
-  com serifada.
-- Texto: **Karla** (humanista, boa em corpo pequeno). Parágrafos, rótulos, listas.
-- Duas famílias, nada além. Contraste por peso, largura e tamanho.
-- `.accent-i` destaca uma palavra do título em turquesa e um grau mais estreita
-  (`wdth 85`) — o recurso tipográfico da casa, uma vez por título.
-- Escala fluida com `clamp()`: h1 `2,35–4,1rem`, h2 `1,85–2,75rem`, h3 `1,15–1,35rem`.
+- Display: **Petrona** (serifada variável, contraste baixo, itálico de verdade).
+  Títulos e nomes de acomodação. Peso 500, escala contida.
+- Texto: **Karla** (humanista, boa em corpo pequeno). Parágrafos, rótulos,
+  botões e listas — inclusive nos botões, para não pesar.
+- Duas famílias, nada além. Contraste por peso e tamanho.
+- `.accent-i` põe uma palavra do título em itálico da serifada, em verde-água —
+  uma vez por título, no máximo.
+- Escala contida de propósito: h1 `2–3,1rem`, h2 `1,6–2,15rem`, h3 `1,08–1,22rem`.
+  Título grande não é hierarquia; é ruído.
 - Corpo `1,0625rem` / `line-height 1.65`; `.lead` limitado a `62ch`.
 
 ## Espaçamento
@@ -84,17 +79,32 @@ Conteúdo: `--shell` = `min(1220px, 100% - 2.5rem)` (4rem no desktop).
 
 ## Botões
 
-Três níveis, nada além:
+O padrão é **leve**: borda fina e fundo quase ausente. Preenchimento sólido só
+no WhatsApp, que é a ação de reserva — assim ele é o elemento mais visível da
+página sem que o resto compita.
 
 | Nível | Classe | Uso |
 |---|---|---|
-| Primário | `.btn--primary` (ou `.btn--whats` no canal) | reservar, consultar disponibilidade |
-| Secundário | `.btn--outline` / `.btn--light` / `.btn--onmedia` | navegação e ações de apoio |
-| Textual | `.tlink` / `.btn--ghost` | "ver todas as categorias", "ver fotos" |
+| Reserva | `.btn--whats` (verde sólido) | consultar disponibilidade, falar com a pousada |
+| Primário | `.btn--primary` (contorno azul-petróleo) | ação principal fora do canal de reserva |
+| Secundário | `.btn--outline` / `.btn--onmedia` (vidro) | navegação e apoio; `--onmedia` só sobre foto |
+| Textual | `.tlink` / `.btn--ghost` | "ver todas", "ver a galeria", "ver em detalhe" |
 
-Altura mínima 50px (42 no `--sm`), raio full, sem gradiente, sem glow, sem sombra
-forte. Hover, foco visível, active e disabled definidos. Rótulos são ações
-concretas ("Consultar disponibilidade", "Como chegar"), nunca "Saiba mais".
+Altura mínima 46px (38 no `--sm`), raio full, tipografia de texto (não display),
+sem gradiente, sem glow, sem sombra forte. Hover, foco visível, active e disabled
+definidos. Rótulos são ações concretas, nunca "Saiba mais".
+
+O botão flutuante do WhatsApp é **só o ícone**, 52px, com o rótulo em `sr-only`.
+
+## Home
+
+A página inicial apresenta e encaminha; ela não conta o site inteiro. Ordem:
+hero → faixa de destaques → a pousada (resumo) → três acomodações → estrutura
+em lista curta → carrossel de áreas comuns → Maragogi (resumo) → chamada de
+reserva → rodapé. Cada bloco tem um link para a página que aprofunda o assunto.
+
+As avaliações saíram da home: a nota do Booking aparece no selo do hero e os
+links das plataformas ficam no rodapé, em uma linha discreta (`.plats`).
 
 ## Header
 

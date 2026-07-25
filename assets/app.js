@@ -92,9 +92,12 @@
   /* ------------------------------------------------------------ estrutura */
   var feats = $('#feats');
   if (feats && typeof ESTRUTURA !== 'undefined') {
+    // na Home a lista vem curta: só ícone e rótulo, sem o parágrafo de apoio
+    var curto = feats.dataset.short != null;
     feats.innerHTML = limited(feats, ESTRUTURA).map(function (f) {
       return '<article class="feat reveal">' + icon(f[0]) +
-        '<h3>' + esc(f[1]) + '</h3><p>' + esc(f[2]) + '</p></article>';
+        '<h3>' + esc(f[1]) + '</h3>' +
+        (curto ? '' : '<p>' + esc(f[2]) + '</p>') + '</article>';
     }).join('');
   }
 
@@ -108,14 +111,30 @@
     }).join('<span class="dot">·</span>');
   };
 
+  /* etiqueta curta da prévia: a capacidade dita como a categoria é chamada */
+  var badge = function (r) {
+    var cap = (r.meta && r.meta[0] && r.meta[0][1]) || '';
+    if (/casal/i.test(cap)) return 'Casal';
+    if (/4/.test(cap)) return 'Família';
+    if (/3/.test(cap)) return 'Até 3';
+    return '';
+  };
+
+  /* nome curto para o cartão da Home: a categoria completa é longa demais */
+  var nomeCurto = function (r) {
+    return r.nome.replace(/^Quarto\s+/i, '').replace(/\s+com Varanda e/i, ' ·');
+  };
+
   var roomCompact = function (r) {
+    var b = badge(r);
     return '<a class="mroom reveal" href="/acomodacoes#suite-' + r.id + '">' +
       '<span class="mroom__media">' +
         '<img src="img/t/' + r.cover + '.webp" alt="' + esc(r.nome) + '"' +
-        ' width="720" height="540" loading="lazy" decoding="async">' +
+        ' width="720" height="450" loading="lazy" decoding="async">' +
+        (b ? '<span class="mroom__badge">' + esc(b) + '</span>' : '') +
       '</span>' +
       '<span class="mroom__body">' +
-        '<span class="mroom__name">' + esc(r.nome) + '</span>' +
+        '<span class="mroom__name">' + esc(nomeCurto(r)) + '</span>' +
         '<span class="mroom__meta">' + shortMeta(r) + '</span>' +
       '</span></a>';
   };
@@ -206,7 +225,15 @@
   var photoCar = $('#photoCar');
   var photoSet = [];
   if (photoCar && typeof GALERIA !== 'undefined') {
-    photoSet = GALERIA.filter(function (g) { return g[1] === 'areas' || g[1] === 'cafe'; });
+    // fotos já usadas em outro ponto da página não voltam no carrossel
+    var jaNaPagina = {};
+    $$('img').forEach(function (im) {
+      var m = (im.getAttribute('src') || '').match(/([^/]+)\.webp$/);
+      if (m) jaNaPagina[m[1]] = true;
+    });
+    photoSet = GALERIA.filter(function (g) {
+      return (g[1] === 'areas' || g[1] === 'cafe') && !jaNaPagina[g[0]];
+    });
     photoCar.innerHTML = photoSet.map(function (g, i) {
       return '<button class="pcard" type="button" data-pc="' + i + '">' +
         '<img src="img/t/' + g[0] + '.webp" alt="' + esc(g[2]) + '"' +
